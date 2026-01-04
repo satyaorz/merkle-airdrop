@@ -4,7 +4,7 @@ out = "out"
 libs = ["lib"]
 
 remappings = [
-    "@openzeppeilin = openzeppelin-contrats/"
+    "@openzeppeilin = lib/openzeppelin-contrats/contracts"
 ]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

@@ -1,66 +1,16 @@
-## Foundry
+Merkle-Airdrop
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+what is a merkle tree?
+=> Merkle tree(also known as hash tree) is type of data stucture used to efficiently verify the integrity and inclusion of data within a large dataset.
 
-Foundry consists of:
+=> it is a binanry tree where every leaf node is a cryptographic hash of a data block, and every non-leaf node is the hash of two of its children nodes. 
+example:
+        a
+    b       c
+d       e,f     g
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+if the above is a binary tree then, "d","e","f","g" are the leaf node and "a" is the root node, then "d","e","f","g" are the cryptographic hash of a datablock and b = hash(d,e), similarly c = hash(f,g) and a = hash(b,c).
 
-## Documentation
+merkle proof: A Merkle Proof is the minimal set of hashes needed to compute the path from a leaf node up to the Merkle Root.
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+=> A Merkle Proof is the specific list of sibling hashes required to reconstruct the Merkle Root from a specific leaf node. By re-calculating the root using this path, a verifier can mathematically prove the leaf belongs to the dataset without having access to the entire tree.
