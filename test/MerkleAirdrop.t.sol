@@ -25,7 +25,6 @@ contract MerkleAirdropTest is Test {
         token.mint(token.owner(), AMOUNT_TO_SEND);
         token.transfer(address(airdrop), AMOUNT_TO_SEND);
         (user, userPrivKey) = makeAddrAndKey("user");
-
     }
 
     function testUsersCanClaim() public {
@@ -37,6 +36,6 @@ contract MerkleAirdropTest is Test {
         console.log("Starting Balance = ", startingBalance);
         console.log("Final Balance = ", finalBalance);
 
-        assertEq(startingBalance+AMOUNT, finalBalance);
+        assertEq(startingBalance + AMOUNT, finalBalance);
     }
 }
