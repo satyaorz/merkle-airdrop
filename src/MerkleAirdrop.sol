@@ -10,6 +10,7 @@ contract MerkleAirdrop {
     // some list of addresses
     // allow someone in the list to claim ERC-20 tokens
     error MerkleAirdrop__InvalidProof();
+    error MerkleAirdrop__AlreadyClaimed();
 
     address[] claimers;
     bytes32 private immutable I_MERKLEROOT;
@@ -24,6 +25,9 @@ contract MerkleAirdrop {
     }
 
     function claim(address account, uint256 amount, bytes32[] calldata merkleProof) external {
+        if (s_hasClaimed[account]) {
+            revert MerkleAirdrop__AlreadyClaimed();
+        }
         // calculate using the account and the amount, the hash -> leaf node
         bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(account, amount))));
         // hash it twice but why?
@@ -32,8 +36,16 @@ contract MerkleAirdrop {
         if (!MerkleProof.verify(merkleProof, I_MERKLEROOT, leaf)) {
             revert MerkleAirdrop__InvalidProof();
         }
+        s_hasClaimed[account] = true;
         emit Claim(account, amount);
         I_AIRDROPTOKEN.safeTransfer(account, amount);
-        s_hasClaimed[account] = true;
+    }
+
+    function getMerkleRoot() external view returns (bytes32) {
+        return I_MERKLEROOT;
+    }
+
+    function getAirdropToken() external view returns (IERC20) {
+        return I_AIRDROPTOKEN;
     }
 }
