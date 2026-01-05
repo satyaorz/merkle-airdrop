@@ -39,14 +39,14 @@ contract MerkleAirdropTest is ZkSyncChainChecker, Test {
     }
 
     function signMessage(uint256 privKey, address account) public view returns (uint8 v, bytes32 r, bytes32 s) {
-        bytes32 hashedMessage = airdrop.getMessage(account, AMOUNT_TO_CLAIM);
+        bytes32 hashedMessage = airdrop.getMessageHash(account, AMOUNT_TO_CLAIM);
         (v, r, s) = vm.sign(privKey, hashedMessage);
     }
 
     function testUsersCanClaim() public {
         uint256 startingBalance = token.balanceOf(user);
 
-        bytes32 digest = airdrop.getMessage(user, AMOUNT_TO_CLAIM);
+        bytes32 digest = airdrop.getMessageHash(user, AMOUNT_TO_CLAIM);
         // we want our user to sign a message
 
         vm.startPrank(user);

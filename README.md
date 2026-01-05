@@ -123,3 +123,6 @@ btw ZkSync has inbuilt account abstraction
 
 
 => I need to read more about DANKSHARDING AND PROTO-DANKSHARDING
+
+more about v,r,s
+![alt text](image-5.png)
