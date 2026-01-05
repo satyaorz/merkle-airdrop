@@ -42,7 +42,9 @@ contract MerkleAirdrop is EIP712 {
         }
 
         // check the signature
-        if ( /*the signatue is not valid*/ !_isValidSignature(account, getMessage(account, amount), v, r, s)) {
+        if ( /*the signatue is not valid*/
+            !_isValidSignature(account, getMessage(account, amount), v, r, s)
+        ) {
             revert MerkleAirdrop__InvalidSignature();
         }
         // calculate using the account and the amount, the hash -> leaf node
