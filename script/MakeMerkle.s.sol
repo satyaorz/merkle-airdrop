@@ -22,7 +22,6 @@ import {ScriptHelper} from "murky/script/common/ScriptHelper.sol";
  * @author kootsZhin
  * @notice https://github.com/dmfxyz/murky
  */
-
 contract MakeMerkle is Script, ScriptHelper {
     using stdJson for string; // enables us to use the json cheatcodes for strings
 

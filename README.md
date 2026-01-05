@@ -22,9 +22,9 @@ but why?
 EIP-191 and EIP-712
 
 => EIP-191 standardises what a signed data should look like
-=> EIP-721 standardises the format of version specific data and the data to sign
+=> EIP-712 standardises the format of version specific data and the data to sign
 
-=> EIP-721 is key to prevent replay attacks
+=> EIP-712 is key to prevent replay attacks
 ![alt text](image.png)
 
 sponsered transaction.
@@ -106,3 +106,20 @@ The EVM precompile EC recover does htis for us in smartcontracts
 ![alt text](image-3.png)
 
 ![alt text](image-4.png)
+
+more:
+EIP-712 presents data in a structured, human-readable format, making signature requests more transparent and less prone to misinterpretation.
+
+rewatch : https://updraft.cyfrin.io/courses/advanced-foundry/merkle-airdrop/transaction-types
+
+EIP-4844: Slashing L2 Fees with Blob Transactions - Discover how EIP-4844 (Proto-Danksharding) introduces blob transactions
+
+When L2s push transactions to Ethereum, ethereum just needs to verify the transactions only once and does not need to store the data forever so L2 put the data batch on blob so that after the verification is done, they are dumped and by this L2 save fees and it is more efficient
+
+https://updraft.cyfrin.io/courses/advanced-foundry/merkle-airdrop/blob-transactions
+
+btw ZkSync has inbuilt account abstraction
+- use smart contracts as user accounts!
+
+
+=> I need to read more about DANKSHARDING AND PROTO-DANKSHARDING
